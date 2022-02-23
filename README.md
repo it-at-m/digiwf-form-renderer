@@ -1,5 +1,12 @@
 <div id="top"></div>
 
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -10,14 +17,14 @@
  <!-- <p align="center">
     This is the json schema form renderer used and developed by DigiWF
     <br />
-    <a href="https://git.muenchen.de/digitalisierung/digiwf-form-renderer"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/it-at-m/digiwf-form-renderer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://git.muenchen.de/digitalisierung/digiwf-form-renderer">View Demo</a>
+    <a href="https://github.com/it-at-m/digiwf-form-renderer">View Demo</a>
     ·
-    <a href="https://git.muenchen.de/digitalisierung/digiwf-form-renderer/issues">Report Bug</a>
+    <a href="https://github.com/it-at-m/digiwf-form-renderer/issues">Report Bug</a>
     ·
-    <a href="https://git.muenchen.de/digitalisierung/digiwf-form-renderer/issues">Request Feature</a>
+    <a href="https://github.com/it-at-m/igiwf-form-renderer/issues">Request Feature</a>
   </p> -->
 </div>
 
@@ -59,7 +66,7 @@
 
 ### Built With
 
-* [DigiWF Vuetify Component Starter](https://github.com/it-at-m/digiwf-vuetify-component-starter)
+* [DigiWF Vuetify Component Starter](https://github.com/it-at-m/digiwf-form-renderer)
 * [Vue.js](https://vuejs.org/)
 * [Vuetify](https://vuetifyjs.com/)
 * [Vuetify Json Schema Form](https://github.com/koumoul-dev/vuetify-jsonschema-form)
@@ -67,14 +74,37 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-The following instructions give a brief example of how to use this library
+_Below is an example of how you can installing and setup up your service_
 
-### Prerequisites
+1. `git clone `
+2. `npm install`
+3. `npm run build`
 
-To use this library you need Vue and Vuetify version 2.x.
+### Developing the library locally
+
+1. Start the dev server with `npm run serve`
+
+### Use your library in another project locally
+
+Run the following commands in your library:
+
+1. `npm run build`
+2. `npm run pack`
+
+Make sure you have provided all the necessary dependencies in your vuetify project and add the library vai `file path`:
+
+```
+"digiwf-form-renderer": "file:../digiwf-form-renderer-0.0.1.tgz"
+```
+
+_For more examples, and how to use the underlying vjsf library, please refer to
+the [Documentation](https://koumoul-dev.github.io/vuetify-jsonschema-form/latest/)_
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -134,10 +164,9 @@ _For more examples, and how to use the underlying vjsf library, please refer to 
 - [ ] Enhanced Validation with ajv
 - [ ] I18n Support
 
-See the [open issues](https://git.muenchen.de/digitalisierung/digiwf-form-renderer/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/it-at-m/igiwf-form-renderer/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -175,7 +204,16 @@ it@m - opensource@muenchendigital.io
 
 
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/it-at-m/digiwf-form-renderer.svg?style=for-the-badge
+[contributors-url]: https://github.com/it-at-m/digiwf-form-renderer/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/it-at-m/digiwf-form-renderer.svg?style=for-the-badge
+[forks-url]: https://github.com/it-at-m/digiwf-form-renderer/network/members
+[stars-shield]: https://img.shields.io/github/stars/it-at-m/digiwf-form-renderer.svg?style=for-the-badge
+[stars-url]: https://github.com/it-at-m/digiwf-form-renderer/stargazers
+[issues-shield]: https://img.shields.io/github/issues/it-at-m/digiwf-form-renderer.svg?style=for-the-badge
+[issues-url]: https://github.com/it-at-m/digiwf-form-renderer/issues
+[license-shield]: https://img.shields.io/github/license/it-at-m/digiwf-form-renderer.svg?style=for-the-badge
+[license-url]: https://github.com/it-at-m/digiwf-form-renderer/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
