@@ -169,9 +169,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-DigiWF - itm.digiwf@muenchen.de
-
-Project Link: [https://git.muenchen.de/digitalisierung](https://git.muenchen.de/digitalisierung)
+it@m - opensource@muenchendigital.io
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
