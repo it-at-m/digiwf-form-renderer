@@ -66,7 +66,7 @@
 
 ### Built With
 
-* [DigiWF Vuetify Component Starter](https://github.com/it-at-m/digiwf-form-renderer)
+* [DigiWF Vuetify Component Starter](https://github.com/it-at-m/digiwf-vuetify-component-starter)
 * [Vue.js](https://vuejs.org/)
 * [Vuetify](https://vuetifyjs.com/)
 * [Vuetify Json Schema Form](https://github.com/koumoul-dev/vuetify-jsonschema-form)
