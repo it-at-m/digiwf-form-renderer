@@ -61,6 +61,10 @@ export default class VJsonRenderer extends Vue {
 
 <style>
 
+.v-input--is-disabled:not(.v-input--is-readonly) a {
+  pointer-events: all !important;
+}
+
 .vjsf-property > .v-input--hide-details {
   margin-bottom: 15px !important;
 }
