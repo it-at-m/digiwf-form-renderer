@@ -28,8 +28,13 @@ export default class VJsonRenderer extends Vue {
     "disableSorting": true,
     "sectionsClass": "pl-1 col-12 pb-0 pt-0",
     "objectContainerClass": "pl-0 pb-0 pt-0",
+    "timePickerProps": {
+      format: "24hr"
+    },
     "messages": {
-      "required": "Dieses Feld ist ein Pflichfeld"
+      "required": "Dieses Feld ist ein Pflichfeld",
+      "preview": "Vorschau",
+      "mdeGuide": "Dokumentation"
     },
     rules: {
       required: function (v: any) {
