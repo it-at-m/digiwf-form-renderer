@@ -61,12 +61,29 @@ export default class VJsonRenderer extends Vue {
 
 <style>
 
-.read-only .v-card__text {
-  color: black !important;
+.read-only .v-input--switch.v-input--is-dirty.v-input--is-disabled {
+  opacity: 1 !important;
 }
 
 .v-input--is-disabled:not(.v-input--is-readonly) a {
   pointer-events: all !important;
+}
+
+.read-only .v-card__text {
+  color: black !important;
+}
+
+.read-only fieldset {
+  border: none !important;
+  padding-left: 0 !important;
+}
+
+.read-only .v-input__slot {
+  padding-left: 0 !important;
+}
+
+.read-only .v-label {
+  color: #222 !important;
 }
 
 .vjsf-property > .v-input--hide-details {
