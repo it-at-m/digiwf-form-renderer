@@ -16,79 +16,90 @@ import {VJsonRenderer} from "@/lib-components";
 export default class App extends Vue {
 
   schema : any = {
+    "key": "MyStartForm",
     "type": "object",
-    "properties": {
-      "stepperProp": {
+    "x-display": "stepper",
+    "allOf": [
+      {
+        "key": "sectionKey1",
+        "title": "First Section",
         "type": "object",
-        "x-display": "stepper",
-        "title": "I'm an object with sections rendered in a stepper.",
+        "x-options": {
+          "sectionsTitlesClasses": ["d-none"],
+        },
         "allOf": [
           {
-            "title": "I'm a section",
-            "description": "I'm a description shown as a paragraph on top of section",
+            "key": "group1",
+            "title": "First Group",
             "type": "object",
-            "required": [
-              "stringProp1"
-            ],
+            "x-options": {
+              "childrenClass": "pr-5 pl-0",
+            },
             "properties": {
               "stringProp1": {
+                "fieldType": "text",
+                "title": "I am a text",
                 "type": "string",
-                "title": "I'm a required property in section 1"
-              }
-            }
-          },
-          {
-            "title": "I'm another section",
-            "type": "object",
-            "required": [
-              "stringProp2"
-            ],
-            "properties": {
-              "stringProp2": {
+                "x-options": {
+                  "fieldColProps": {
+                    "cols": 12,
+                    "sm": 6
+                  }
+                },
+                "x-props": {
+                  "outlined": true,
+                  "dense": true
+                },
+              },
+              "numberProp1": {
+                "fieldType": "integer",
+                "type": "integer",
+                "title": "I am a number",
+                "x-options": {
+                  "fieldColProps": {
+                    "cols": 12,
+                    "sm": 6
+                  }
+                },
+                "x-props": {
+                  "outlined": true,
+                  "dense": true
+                }
+              },
+              "textarea1": {
+                "fieldType": "textarea",
                 "type": "string",
-                "title": "I'm a required property in section 2"
-              }
-            }
-          }
-        ]
-      },
-      "verticalStepperProp": {
-        "type": "object",
-        "x-display": "vertical-stepper",
-        "title": "I'm an object with sections rendered in a vertical stepper.",
-        "allOf": [
-          {
-            "title": "I'm a section",
-            "description": "I'm a description shown as a paragraph on top of section",
-            "type": "object",
-            "required": [
-              "stringProp1"
-            ],
-            "properties": {
-              "stringProp1": {
+                "x-display": "textarea",
+                "title": "I am a textarea",
+                "x-props": {
+                  "outlined": true,
+                  "dense": true
+                }
+              },
+              "booleanprop": {
+                "fieldType": "boolean",
+                "type": "boolean",
+                "title": "I am a checkbox",
+                "x-props": {
+                  "outlined": true,
+                  "dense": true
+                }
+              },
+              "dateprop": {
+                "fieldType": "date",
                 "type": "string",
-                "title": "I'm a required property in section 1"
-              }
+                "format": "date",
+                "title": "I am a date",
+                "x-props": {
+                  "outlined": true,
+                  "dense": true
+                }
+              },
             }
-          },
-          {
-            "title": "I'm another section",
-            "type": "object",
-            "required": [
-              "stringProp2"
-            ],
-            "properties": {
-              "stringProp2": {
-                "type": "string",
-                "title": "I'm a required property in section 2"
-              }
-            }
-          }
-        ]
+          }]
       }
-    }
+    ]
   };
-
 }
 </script>
 
