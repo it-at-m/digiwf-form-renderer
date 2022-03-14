@@ -75,9 +75,7 @@ const baseConfig = {
 // Refer to https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
 const external = [
   'vue',
-  'vuetify/lib',
-  '@koumoul/vjsf'
-
+  'vuetify/lib'
 ];
 
 // UMD/IIFE shared settings: output.globals
