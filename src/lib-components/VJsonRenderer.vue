@@ -82,10 +82,6 @@ export default class VJsonRenderer extends Vue {
   background: rgb(245, 245, 245);
 }
 
-/*.read-only .v-input__slot {*/
-/*  padding-left: 0 !important;*/
-/*}*/
-
 .read-only .v-label {
   color: #222 !important;
   font-size: 16px !important;
