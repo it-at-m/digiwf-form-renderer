@@ -1,6 +1,6 @@
 {
   "name": "@muenchen/digiwf-form-renderer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "DigiWF form renderer vuetify component lib",
   "license": "MIT",
   "main": "dist/digiwf-form-renderer.ssr.js",
@@ -24,7 +24,9 @@
     "postbuild": "rimraf ./dist/types/dev ./dist/types/src/entry.d.ts"
   },
   "dependencies": {
-    "vuetify": "^2.6.3",
+    "vuetify": "^2.6.3"
+  },
+  "peerDependencies": {
     "@koumoul/vjsf": "^2.11.3"
   },
   "devDependencies": {
