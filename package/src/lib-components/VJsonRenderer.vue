@@ -1,10 +1,10 @@
 <template>
   <div>
-      <v-jsf @input="input" v-model="currentValue" :schema="currentSchema" :options="currentOptions">
-        <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
-          <slot :name="name" v-bind="data"></slot>
-        </template>
-      </v-jsf>
+    <v-jsf @input="input" v-model="currentValue" :schema="schema" :options="options">
+      <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
+        <slot :name="name" v-bind="data"></slot>
+      </template>
+    </v-jsf>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ import VJsf from '@koumoul/vjsf/lib/VJsf.js';
 import '@koumoul/vjsf/lib/VJsf.css';
 import '@koumoul/vjsf/lib/deps/third-party.js';
 import '@koumoul/vjsf/dist/main.css';
-import deepmerge from 'deepmerge'
 
 @Component({
   name: 'v-json-renderer',
@@ -23,46 +22,21 @@ import deepmerge from 'deepmerge'
 export default class VJsonRenderer extends Vue {
 
   currentValue: any = {};
-  defaultOptions = {
+  options = {
     "locale": "de",
     "editMode": "inline",
     "disableSorting": true,
     "sectionsClass": "pl-1 col-12 pb-0 pt-0",
     "objectContainerClass": "pl-0 pb-0 pt-0",
-    "timePickerProps": {
-      "format": "24hr"
-    },
     "messages": {
-      "required": "Dieses Feld ist ein Pflichfeld",
-      "preview": "Vorschau",
-      "mdeGuide": "Dokumentation"
+      "required": "Dieses Feld ist ein Pflichfeld"
     },
-  };
-  rules = {
-    required: function (v: any) {
-      return (!!v && v !== '') || 'Dieses Feld ist ein Pflichfeld';
-    }
-  };
-
-  get currentOptions(): any {
-    return {
-      rules: this.rules,
-      ... deepmerge(this.defaultOptions, this.options!),
-    }
-  }
-
-  get currentSchema() : any {
-    if(this.options && this.options.readOnly) {
-      return {
-        ...this.schema,
-        readOnly: true
+    rules: {
+      required: function (v: any) {
+        return (!!v && v !== '') || 'Dieses Feld ist ein Pflichfeld';
       }
-    }
-    return this.schema
+    },
   }
-
-  @Prop()
-  options: any;
 
   @Prop()
   buttonText: string | undefined;
@@ -86,23 +60,6 @@ export default class VJsonRenderer extends Vue {
 </script>
 
 <style>
-
-.v-input--is-disabled:not(.v-input--is-readonly) a {
-  pointer-events: all !important;
-}
-
-.read-only .v-card__text {
-  color: black !important;
-}
-
-.read-only fieldset {
-  background: rgb(245, 245, 245);
-}
-
-.read-only .v-label {
-  color: #222 !important;
-  font-size: 16px !important;
-}
 
 .vjsf-property > .v-input--hide-details {
   margin-bottom: 15px !important;

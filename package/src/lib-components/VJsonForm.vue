@@ -2,7 +2,7 @@
   <div>
     <v-form
       ref="form">
-      <v-json-renderer :options="options" @input="input" :value="currentValue" :schema="schema">
+      <v-json-renderer @input="input" :value="currentValue" :schema="schema">
         <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
           <slot :name="name" v-bind="data"></slot>
         </template>
@@ -32,9 +32,6 @@ import {VJsonRenderer} from "@/lib-components/index";
 export default class VJsonForm extends Vue {
 
   currentValue: any = {};
-
-  @Prop()
-  options: any;
 
   @Prop()
   buttonText: string | undefined;
