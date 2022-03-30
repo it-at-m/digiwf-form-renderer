@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-jsf @input="input" v-model="currentValue" :schema="schema" :options="options">
-      <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
-        <slot :name="name" v-bind="data"></slot>
-      </template>
-    </v-jsf>
+      <v-jsf @input="input" v-model="currentValue" :schema="currentSchema" :options="currentOptions">
+        <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
+          <slot :name="name" v-bind="data"></slot>
+        </template>
+      </v-jsf>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ import VJsf from '@koumoul/vjsf/lib/VJsf.js';
 import '@koumoul/vjsf/lib/VJsf.css';
 import '@koumoul/vjsf/lib/deps/third-party.js';
 import '@koumoul/vjsf/dist/main.css';
+import deepmerge from 'deepmerge'
 
 @Component({
   name: 'v-json-renderer',
@@ -22,26 +23,46 @@ import '@koumoul/vjsf/dist/main.css';
 export default class VJsonRenderer extends Vue {
 
   currentValue: any = {};
-  options = {
+  defaultOptions = {
     "locale": "de",
     "editMode": "inline",
     "disableSorting": true,
     "sectionsClass": "pl-1 col-12 pb-0 pt-0",
     "objectContainerClass": "pl-0 pb-0 pt-0",
     "timePickerProps": {
-      format: "24hr"
+      "format": "24hr"
     },
     "messages": {
       "required": "Dieses Feld ist ein Pflichfeld",
       "preview": "Vorschau",
       "mdeGuide": "Dokumentation"
     },
-    rules: {
-      required: function (v: any) {
-        return (!!v && v !== '') || 'Dieses Feld ist ein Pflichfeld';
-      }
-    },
+  };
+  rules = {
+    required: function (v: any) {
+      return (!!v && v !== '') || 'Dieses Feld ist ein Pflichfeld';
+    }
+  };
+
+  get currentOptions(): any {
+    return {
+      rules: this.rules,
+      ... deepmerge(this.defaultOptions, this.options!),
+    }
   }
+
+  get currentSchema() : any {
+    if(this.options && this.options.readOnly) {
+      return {
+        ...this.schema,
+        readOnly: true
+      }
+    }
+    return this.schema
+  }
+
+  @Prop()
+  options: any;
 
   @Prop()
   buttonText: string | undefined;
@@ -65,10 +86,6 @@ export default class VJsonRenderer extends Vue {
 </script>
 
 <style>
-
-/*.read-only .v-input--switch.v-input--is-dirty.v-input--is-disabled {*/
-/*  opacity: 1 !important;*/
-/*}*/
 
 .v-input--is-disabled:not(.v-input--is-readonly) a {
   pointer-events: all !important;

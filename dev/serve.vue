@@ -1,24 +1,37 @@
 
 <template>
   <v-app>
-    <VJsonRenderer :schema="schema"></VJsonRenderer>
+    <VJsonForm :options="defaultOptions" :schema="schema"></VJsonForm>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from "vue-property-decorator";
-import {VJsonRenderer} from "@/lib-components";
+import {VJsonForm} from "@/lib-components";
 
 @Component({
-  components: {VJsonRenderer}
+  components: {VJsonForm}
 })
 export default class App extends Vue {
 
+  defaultOptions = {
+    "locale": "de",
+    "readOnly" : true,
+    "editMode": "inline",
+    "disableSorting": true,
+    "timePickerProps": {
+      "format": "24hr"
+    },
+    "messages": {
+      "required": "Dieses Feld ist ein Pflichfeld",
+      "preview": "Vorschau",
+      "mdeGuide": "Dokumentation"
+    }
+  };
+
   schema : any = {
-    "key": "MyStartForm",
     "type": "object",
-    "x-display": "stepper",
     "allOf": [
       {
         "key": "sectionKey1",
@@ -32,6 +45,7 @@ export default class App extends Vue {
             "key": "group1",
             "title": "First Group",
             "type": "object",
+            "required": ["dateprop"],
             "x-options": {
               "childrenClass": "pr-5 pl-0",
             },
@@ -88,7 +102,7 @@ export default class App extends Vue {
               "dateprop": {
                 "fieldType": "date",
                 "type": "string",
-                "format": "date",
+                "format": "time",
                 "title": "I am a date",
                 "x-props": {
                   "outlined": true,
