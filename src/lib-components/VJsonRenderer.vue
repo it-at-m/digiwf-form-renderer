@@ -1,10 +1,10 @@
 <template>
   <div>
-      <v-jsf @input="input" v-model="currentValue" :schema="currentSchema" :options="currentOptions">
-        <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
-          <slot :name="name" v-bind="data"></slot>
-        </template>
-      </v-jsf>
+    <v-jsf @input="input" v-model="currentValue" :schema="currentSchema" :options="currentOptions">
+      <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
+        <slot :name="name" v-bind="data"></slot>
+      </template>
+    </v-jsf>
   </div>
 </template>
 
@@ -27,8 +27,8 @@ export default class VJsonRenderer extends Vue {
     "locale": "de",
     "editMode": "inline",
     "disableSorting": true,
-    "sectionsClass": "pl-1 col-12 pb-0 pt-0",
-    "objectContainerClass": "pl-0 pb-0 pt-0",
+    "sectionsClass": "pl-0 col-12 pb-0 pt-0 pr-0",
+    "objectContainerClass": "pl-0 pb-0 pt-0 pr-0",
     "timePickerProps": {
       "format": "24hr"
     },
@@ -47,12 +47,12 @@ export default class VJsonRenderer extends Vue {
   get currentOptions(): any {
     return {
       rules: this.rules,
-      ... deepmerge(this.defaultOptions, this.options!),
+      ...deepmerge(this.defaultOptions, this.options!),
     }
   }
 
-  get currentSchema() : any {
-    if(this.options && this.options.readOnly) {
+  get currentSchema(): any {
+    if (this.options && this.options.readOnly) {
       return {
         ...this.schema,
         readOnly: true
@@ -99,6 +99,10 @@ export default class VJsonRenderer extends Vue {
   background: rgb(245, 245, 245);
 }
 
+.v-input {
+  margin-right: 10px !important;
+}
+
 .read-only .v-label {
   color: #222 !important;
   font-size: 16px !important;
@@ -108,8 +112,16 @@ export default class VJsonRenderer extends Vue {
   margin-bottom: 15px !important;
 }
 
-.vjsf-property > .row:last-child {
+.read-only > .v-text-field.v-text-field--enclosed {
   margin-bottom: 15px !important;
+}
+
+.read-only > .row > .v-text-field.v-text-field--enclosed {
+  margin-bottom: 15px !important;
+}
+
+.vjsf-property > .row:last-child > .col > .v-card {
+  margin-bottom: 20px !important;
 }
 
 .theme--light.v-text-field--filled > .v-input__control > .v-input__slot {
