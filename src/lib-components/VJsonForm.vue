@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-form
-      ref="form">
+        ref="form">
       <v-json-renderer :options="options" @input="input" :value="currentValue" :schema="schema">
         <template v-for="(index, name) in $scopedSlots" v-slot:[name]="data">
           <slot :name="name" v-bind="data"></slot>
@@ -10,10 +10,10 @@
       <v-flex class="d-flex" style="width: 100%">
         <v-spacer/>
         <v-btn
-          class="mr-10 mt-5"
-          color="primary"
-          :disabled="isCompleting"
-          @click="complete">
+            class="mt-5"
+            color="primary"
+            :disabled="isCompleting"
+            @click="complete">
           {{ buttonText || "Abschließen" }}
         </v-btn>
       </v-flex>
