@@ -1,6 +1,6 @@
 {
   "name": "@muenchen/digiwf-form-renderer",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "DigiWF form renderer vuetify component lib",
   "license": "MIT",
   "main": "dist/digiwf-form-renderer.ssr.js",
