@@ -1,9 +1,13 @@
 <template>
   <v-app>
     <div class="pa-5">
-      <VJsonForm @input="input" :options="defaultOptions" :schema="schema"></VJsonForm>
+      <VJsonForm @input="input" :value="value" :options="defaultOptions" :schema="schema">
+        <template #custom-multi-file-input="context">
+          <v-multi-file-input v-bind="context"/>
+        </template>
+      </VJsonForm>
       <div>
-        {{currentValue}}
+        {{ currentValue }}
       </div>
     </div>
   </v-app>
@@ -11,7 +15,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from "vue-property-decorator";
+import {Component, Provide} from "vue-property-decorator";
 import {VJsonForm} from "@/lib-components";
 
 @Component({
@@ -20,9 +24,19 @@ import {VJsonForm} from "@/lib-components";
 export default class App extends Vue {
 
   currentValue: any = {};
+  value: any = {
+    'fileProp': {key: 'abc', amount: 1}
+  }
 
-  input(value: any) : void {
-   this.currentValue = value;
+  @Provide('formContext')
+  formContext = {
+    id: 'Task01',
+    type: 'task'
+  }
+  @Provide('apiEndpoint') apiEndpoint = 'api/digitalwf-backend-service'
+
+  input(value: any): void {
+    this.currentValue = value;
   }
 
   defaultOptions = {
@@ -39,7 +53,7 @@ export default class App extends Vue {
     }
   };
 
-  schema: any ={
+  schema: any = {
     "type": "object",
     "properties": {
       "dateProp": {
@@ -57,6 +71,29 @@ export default class App extends Vue {
         "type": "string",
         "title": "I'm a date with time",
         "format": "date-time"
+      },
+      "fileProp": {
+        "fieldType": "file",
+        "title": "Dateien",
+        "x-display": "custom-multi-file-input",
+        "type": "object",
+        "properties": {"key": {"type": "string"}, "amount": {"type": "integer"}},
+        "filePath": "test",
+        "uuidEnabled": true,
+        "x-options": {
+          "fieldColProps": {
+            "cols": 12,
+            "sm": 12,
+            "messages": {}
+          }
+        },
+        "x-props": {
+          "outlined": true,
+          "dense": true
+        },
+        "x-rules": [
+          "requiredObject"
+        ]
       }
     }
   };
