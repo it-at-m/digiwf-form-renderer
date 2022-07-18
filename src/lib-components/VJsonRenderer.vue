@@ -39,10 +39,7 @@ export default class VJsonRenderer extends Vue {
   };
   formats = {
     "time": function (e: any, t: any) {
-      console.log(e);
-      console.log(t);
       const r = new Date("".concat((new Date).toISOString().split("T")[0], "T").concat(e));
-      console.log(r);
       return new Date(r.getTime() + 6e4 * r.getTimezoneOffset()).toLocaleTimeString(t)
     }
   }
