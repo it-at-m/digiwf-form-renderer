@@ -24,7 +24,6 @@ export default class VJsonRenderer extends Vue {
 
   currentValue: any = {};
   defaultOptions = {
-    "locale": "de",
     "editMode": "inline",
     "disableSorting": true,
     "sectionsClass": "pl-0 col-12 pb-0 pt-0 pr-0",
@@ -38,15 +37,25 @@ export default class VJsonRenderer extends Vue {
       "mdeGuide": "Dokumentation"
     },
   };
+  formats = {
+    "time": function (e: any, t: any) {
+      const r = new Date("".concat((new Date).toISOString().split("T")[0], "T").concat(e));
+      return new Date(r.getTime() + 6e4 * r.getTimezoneOffset()).toLocaleTimeString(t)
+    }
+  }
   rules = {
     required: function (v: any) {
       return (!!v && v !== '') || 'Dieses Feld ist ein Pflichfeld';
+    },
+    requiredObject: function (v: { amount: number }) {
+      return (!!v && v.amount < 1) || 'Dieses Feld ist ein Pflichfeld';
     }
   };
 
   get currentOptions(): any {
     return {
       rules: this.rules,
+      formats: this.formats,
       ...deepmerge(this.defaultOptions, this.options!),
     }
   }
